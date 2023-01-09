@@ -14,11 +14,8 @@ const todos = [
     {title: 'tarea 1', description : 'descripcion para 1', userId: 3}
 ];
 
-const categories =[];
-
-const todosCategories = [];
  
-db.sync({force: true})
+db.sync({force: false})
 .then (()=>{
     console.log ('Iniciando con el sembrado');
     users.forEach ((user)=> Users.create(user));
