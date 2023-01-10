@@ -1,33 +1,35 @@
 const db = require ('../utils/database');
 const {DataTypes} = require ('sequelize');
 const Users = require('./users.model');
-
-const Todos =db.define ('todos', {
-    id: {primaryKey:true,
-         type: DataTypes.INTEGER,
-         autoIcrement: true,
-         allowNull: false,
+const Todos = db.define('todos', {
+    id: {
+        primaryKey: true,
+        type: DataTypes.INTEGER,
+        autoIncrement: true,
+        allowNull: false,
+        unique: true
     },
-    title:{
+    title: {
         type: DataTypes.STRING,
         allowNull: false,
     },
-    description:{
+    description: {
         type: DataTypes.STRING,
     },
     isComplete: {
-        type: DataTypes.STRING,
+        type: DataTypes.BOOLEAN,
         defaultValue: false,
-        field: "is_complete"
+        field: "is_complete", //el field da el nombre que se adopta en la base de datos
     },
-    userId:{
+    userId: {
         type: DataTypes.INTEGER,
         allowNull: false,
         field: "user_id",
-        reference :{
+        references: {
             model: Users,
-            key: 'id'
-        },
+            key: "id"
+        }
     },
-})
- module.exports = Todos;
+
+});
+module.exports = Todos;

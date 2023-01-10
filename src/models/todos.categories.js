@@ -4,30 +4,31 @@ const Categories = require("./categories.models");
 const Todos = require("./todo.model");
 
 const TodosCategories = db.define(
-  "task_categories",
+  "todos_categories",
   {
     id: {
       autoIncrement: true,
       primaryKey: true,
       allowNull: false,
       type: DataTypes.INTEGER,
+      unique: true
     },
     categoryId: {
       type: DataTypes.INTEGER,
-      allowNull: false,    
-      key: "id",
+      allowNull: false,
+      field: "category_id",
       references: {
-        model: Categories,
-        key: "id",
+          model: Categories,
+          key: "id",
       }
-      },
-    todoId: {
+  },
+  todoId:{
       type: DataTypes.INTEGER,
       allowNull: false,
-      field: "task_id",
+      field: "todo_id",
       references: {
-        model: Todos,
-        key: "id",
+          model: Todos,
+          key: "id",
       }
     },
   },

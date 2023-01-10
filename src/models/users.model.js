@@ -5,29 +5,32 @@ const {DataTypes} = require ('sequelize');
 
 //definir el modelo de usuarios, los modelos se define con una mayuscula
 //parametros nombre de la tabla y atributos de las tablas
-const Users = db.define("users", {
-    id:{
+const Users = db.define('users', {
+    id: {
         primaryKey: true,
         type: DataTypes.INTEGER,
         autoIncrement: true,
         allowNull: false,
+        unique: true
     },
-    username:{
+    username: {
         type: DataTypes.STRING,
         allowNull: false,
         unique: true,
     },
-    email : {
+    email: {
         type: DataTypes.STRING,
         allowNull: false,
         unique: true,
         validate: {
-        isEmail:true,
-        },
+            isEmail: true,
+        }
     },
-    password:{
+    password: {
         type: DataTypes.STRING,
         allowNull: false,
-    },
-});
-module.exports= Users;
+    }
+},
+);
+
+module.exports = Users;
