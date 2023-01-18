@@ -28,7 +28,7 @@ const Todos = db.define('todos', {
         references: {
             model: Users,
             key: "id"
-        }
+        },
     },
 
 });

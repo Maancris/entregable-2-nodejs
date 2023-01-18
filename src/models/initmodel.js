@@ -8,13 +8,14 @@ const TodosCategories = require('./todos.categories');
 const initModels = ()=>{
 
     
-    Todos.belongsTo(Users, {as: "author", foreingkey: "user_id"}); //beLongsTo (pertenece a: )
-    Users.hasMany(Todos, {as: "task", foreingkey: "user_id"}); //hasMany (tiene muchos: )
-    TodosCategories.belongsTo(Todos, {as: "task", foreingkey: "todo_id"});
-    Todos.hasMany(TodosCategories, {as: "category", foreingkey: "todo_id"});
+    Todos.belongsTo(Users, {as: "author", foreignKey: "user_id"}); //beLongsTo (pertenece a: )
+    Users.hasMany(Todos, {as: "task", foreignKey: "user_id"}); //hasMany (tiene muchos: )
+    
+    TodosCategories.belongsTo(Todos, {as: "task", foreignKey: "todo_id"});
+    Todos.hasMany(TodosCategories, {as: "categories", foreignKey: "todo_id"});
    
-    TodosCategories.belongsTo(Categories, {as: "category", foreingkey: "category_id"});
-    Categories.hasMany(TodosCategories, {as: "task", foreingkey: "category_id"});
+    TodosCategories.belongsTo(Categories, {as: "category", foreignKey: "category_id"});
+    Categories.hasMany(TodosCategories, {as: "task", foreignKey: "category_id"});
 
 }
 

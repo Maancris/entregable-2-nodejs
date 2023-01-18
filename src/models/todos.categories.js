@@ -29,7 +29,7 @@ const TodosCategories = db.define(
       references: {
           model: Todos,
           key: "id",
-      }
+      },
     },
   },
   {
