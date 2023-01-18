@@ -1,4 +1,5 @@
 const jwt = require ('jsonwebtoken');
+require( 'dotenv').config();
 
 const authMiddleware = (req, res, next) => {
     let {authorization: token} = req.headers;
@@ -6,7 +7,7 @@ const authMiddleware = (req, res, next) => {
     console.log (token);
     jwt.verify(
         token, 
-        'sha', 
+        process.env.JWT_SECRET, 
         {algorithms: 'HS512' },
         (err, decoded)=> {
         if (err){

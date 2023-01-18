@@ -6,14 +6,16 @@ const userRoutes = require ('./routes/users.routes');
 const todosRoutes = require ('./routes/todos.routes');
 const cors = require('cors');
 const authRoutes = require ('./routes/auth.routes.js');
+require( 'dotenv').config();
 
-console.log(process.env.SESSIONNAME)
+console.log(process.env.PORT)
 
 const app = express();
-app.use(express.json())
+
+app.use(express.json());
 app.use(cors());
 
-const PORT = 8000;
+const PORT = process.env.PORT;
 
 //probanso la conexion a la base de dato
 db.authenticate()
